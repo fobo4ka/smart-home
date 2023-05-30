@@ -1,50 +1,28 @@
 import { type IDevice, type IMaxPower, type IRate } from '../types';
+import axios from "axios";
 
 const BASE_URL = 'http://localhost:4000';
 
-async function handleResponse(response: Response): Promise<unknown | Error> {
-  if (response.ok) {
-    return await response.json();
-  }
-}
-
 export const getDevices = async (): Promise<IDevice[]> => {
-  return await fetch(`${BASE_URL}/devices`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then<IDevice[]>(handleResponse);
+  return await axios
+      .get(`${BASE_URL}/devices`)
+      .then((response) => response.data);
 };
 
 export const getRates = async (): Promise<IRate[]> => {
-  return await fetch(`${BASE_URL}/rates`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then<IRate[]>(handleResponse);
+  return await axios
+      .get(`${BASE_URL}/rates`)
+      .then((response) => response.data);
 };
 
 export const getMaxPower = async (): Promise<IMaxPower> => {
-  return await fetch(`${BASE_URL}/maxPower`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then<IMaxPower>(handleResponse);
+  return await axios
+      .get(`${BASE_URL}/maxPower`)
+      .then((response) => response.data);
 };
 
 export const postNewDevice = async (data: IDevice): Promise<IDevice> => {
-  return await fetch(`${BASE_URL}/devices`, {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }).then<IDevice>(handleResponse);
+  return await axios
+      .post(`${BASE_URL}/devices`, data)
+      .then((response) => response.data);
 };

@@ -7,7 +7,7 @@ interface TResult {
   ids: string[];
 }
 
-type Result = Record<Hour, TResult> | Record<string, unknown>;
+export type Result = Record<Hour, TResult>;
 
 const devicePredicate = (mode: IDevice['mode'], rate: IRate): boolean =>
   Boolean(
@@ -18,22 +18,23 @@ const devicePredicate = (mode: IDevice['mode'], rate: IRate): boolean =>
 const hoursDetermination = (
   device: IDevice,
   rate: IRate,
-  maxPower: IMaxPower,
+  maxPower: IMaxPower['value'],
   result: Result,
   currentDuration: number
 ): number => {
   for (let hour = rate.from; hour !== rate.to && currentDuration < device.duration; hour = (hour + 1) % HOURS_COUNT) {
-    const currentPower = (result[hour]?.usedPower || 0) + device.power;
+    const key = hour.toString() as Hour;
+    const currentPower = (result[key]?.usedPower || 0) + device.power;
     if (currentPower <= maxPower) {
-      if (result[hour]) {
-        result[hour].usedPower += device.power;
-        result[hour].cost += device.power * rate.value;
-        result[hour].ids.push(device.id);
+      if (result[key]) {
+        result[key].usedPower += device.power;
+        result[key].cost += device.power * rate.value;
+        result[key].ids.push(device.id);
       } else {
-        result[hour] = {
+        result[key] = {
           usedPower: device.power,
           cost: device.power * rate.value,
-          ids: [device.id],
+          ids: [ device.id ],
         };
       }
 
@@ -46,7 +47,7 @@ const hoursDetermination = (
 const distributionOfDevicesOverTime = (
   device: IDevice,
   rates: IRate[],
-  maxPower: IMaxPower,
+  maxPower: IMaxPower['value'],
   result: Result
 ): Result => {
   let currentDuration: number = 0;
@@ -59,8 +60,8 @@ const distributionOfDevicesOverTime = (
   return result;
 };
 
-export const usePrepareData = (devices: IDevice[], rates: IRate[], maxPower: IMaxPower, isFetching: boolean) => {
-  let result: Result = {};
+export const prepareData = (devices: IDevice[], rates: IRate[], maxPower: IMaxPower['value'], isFetching: boolean): Result => {
+  let result: Result = {} as Result;
 
   if (isFetching) {
     return result;

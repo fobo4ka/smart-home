@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
-import { COLORS } from '../../constants';
+import { COLORS } from '../../../constants';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -25,7 +25,7 @@ export const Content = styled.div`
   border: 2px solid rgb(240, 240, 240);
   border-radius: 12px;
   padding: 40px;
-  box-shadow: 0 4px 16px ${rgba(COLORS.white, 0.12)};
+  box-shadow: 0 4px 16px ${rgba(255, 255, 255, 0.12)};
 `;
 
 export const CloseButton = styled.button`

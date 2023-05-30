@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { transitions } from 'polished';
 
-import { COLORS } from '../../constants';
+import { COLORS } from '../../../constants';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -24,6 +24,7 @@ export const StyledInput = styled.input`
 
 export const Message = styled.div<{ $isVisible: boolean; $transform: string }>`
   font-size: 12px;
+  line-height: 1.2;
   color: ${COLORS.orange};
   margin: 0;
   position: absolute;
@@ -32,5 +33,5 @@ export const Message = styled.div<{ $isVisible: boolean; $transform: string }>`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   pointer-events: ${({ $isVisible }) => ($isVisible ? 'visible' : 'none')};
   z-index: 0;
-  ${transitions(['transform', 'opacity'], '150ms ease-out')};
+  ${transitions([ 'transform', 'opacity' ], '150ms ease-out')};
 `;

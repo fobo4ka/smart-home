@@ -6,7 +6,7 @@ export interface PortalProps {
 }
 
 export const Portal: React.FC<PortalProps> = ({ children }: PortalProps) => {
-  const [el] = React.useState(document.createElement('div'));
+  const [ el ] = React.useState(document.createElement('div'));
 
   React.useLayoutEffect(() => {
     document.body.appendChild(el);
@@ -14,7 +14,7 @@ export const Portal: React.FC<PortalProps> = ({ children }: PortalProps) => {
     return () => {
       document.body.removeChild(el);
     };
-  }, [el]);
+  }, [ el ]);
 
   return ReactDOM.createPortal(children, el);
 };

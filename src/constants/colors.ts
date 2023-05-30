@@ -6,7 +6,10 @@ export const COLORS = {
   orange: 'rgb(153, 102, 255)',
   purple: 'rgb(255, 159, 64)',
   gray: 'rgb(36, 36, 36)',
-  black: 'rgb(0, 0, 0)',
-  white: 'rgb(255, 255, 255)',
-  transparent: 'rgba(0, 0, 0, 0)',
+  darkBlue: 'rgb(26, 62, 255)',
+  green: 'rgb(0, 128, 0)',
+  tomato: 'rgb(255, 99, 71)',
+  lightGray: 'rgb(128, 128, 128)',
+  yellowgreen: 'rgb(154, 205, 50)',
+  teal: 'rgb(0, 128, 128)',
 };

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { transitions, rgba } from 'polished';
-import { COLORS } from '../../constants';
+import { COLORS } from '../../../constants';
 
 const THEME = {
   default: {
@@ -39,7 +39,7 @@ const THEME = {
   },
 };
 
-export const StyledButton = styled.button<{ $color: 'default' | 'pink' }>`
+export const StyledButton = styled.button<{ $color: 'default' | 'red' }>`
   outline: none;
   font-size: 14px;
   line-height: 20px;
@@ -52,7 +52,7 @@ export const StyledButton = styled.button<{ $color: 'default' | 'pink' }>`
     background-color: ${THEME[$color].default.backgroundColor};
     color: ${THEME[$color].default.color};
     border: 1px solid ${THEME[$color].default.borderColor};
-    ${transitions(['color', 'background-color', 'border-color'], '150ms ease-in')};
+    ${transitions([ 'color', 'background-color', 'border-color' ], '150ms ease-in')};
 
     &:hover {
       background-color: ${THEME[$color].hover.backgroundColor};

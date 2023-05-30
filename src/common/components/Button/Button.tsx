@@ -5,7 +5,7 @@ import { StyledButton } from './styles';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void;
   children: string;
-  color?: 'default' | 'pink';
+  color?: 'default' | 'red';
 }
 
 export const Button: React.FC<ButtonProps> = ({ onClick, children, color = 'default', ...rest }) => (

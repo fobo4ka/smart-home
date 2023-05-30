@@ -48,10 +48,6 @@
         "jsx-quotes": [
             "error",
             "prefer-double"
-        ],
-        "semi": [
-            "error",
-            "never"
         ]
     }
 }

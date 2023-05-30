@@ -3,7 +3,7 @@ export interface IDevice {
   name: string;
   power: number;
   duration: number;
-  mode?: 'day' | 'night';
+  mode?: TMode;
 }
 
 export interface IRate {
@@ -17,3 +17,5 @@ export interface IMaxPower {
 }
 
 export type Hour = '1' | '2' | '3' | '4';
+
+export type TMode = 'day' | 'night';
